@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Executive Leadership | Blooming Academies Foundation</title>
-  <meta name="description" content="Meet the leadership team behind Blooming Academies Foundation's mission to enhance K-12 education across Florida.">
+  <title>Our People &amp; Governance | Blooming Academies Foundation</title>
+  <meta name="description" content="Meet the leadership team and Board of Directors behind Blooming Academies Foundation and Blooming College Academies.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -34,98 +34,307 @@
     </div>
   </nav>
 
+  <style>
+    /* Our People / Governance tabs — uses the site's navy + blue palette */
+    .people-tabs { display: inline-flex; gap: 6px; padding: 6px; border-radius: 999px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); margin-top: 30px; }
+    .people-tab { font-family: inherit; font-size: 15px; font-weight: 800; letter-spacing: 0.02em; color: var(--muted); background: none; border: 0; border-radius: 999px; padding: 12px 24px; cursor: pointer; transition: background 0.2s, color 0.2s; }
+    .people-tab:hover { color: var(--text); }
+    .people-tab.active { color: #fff; background: linear-gradient(135deg, #3f78c4 0%, var(--blue) 100%); box-shadow: 0 12px 30px rgba(110,164,231,0.28); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+    .tab-panel .eyebrow-blue, .eyebrow-blue { display: inline-flex; padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(110,164,231,0.32); background: rgba(110,164,231,0.1); color: var(--blue); font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+    .panel-intro { margin-bottom: 30px; }
+    .panel-intro h2 { font-size: clamp(30px, 4vw, 52px); margin-top: 16px; max-width: 820px; }
+    .panel-intro p { margin: 14px 0 0; max-width: 720px; color: var(--muted); font-size: 17px; line-height: 1.7; }
+    .text-link { color: var(--blue); font-weight: 700; background: none; border: 0; padding: 0; font: inherit; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+    .profile { display: grid; grid-template-columns: 220px 1fr; gap: 30px; align-items: start; }
+    .profile-photo { width: 220px; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 18px; border: 1px solid rgba(110,164,231,0.25); background: var(--surface-2); }
+    .profile-initials { width: 220px; aspect-ratio: 3 / 4; border-radius: 18px; display: grid; place-items: center; font-family: 'Playfair Display', serif; font-size: 56px; font-weight: 700; color: var(--blue); background: linear-gradient(135deg, rgba(110,164,231,0.22), rgba(255,255,255,0.04)); border: 1px solid rgba(110,164,231,0.25); }
+    .profile h3 { font-size: 28px; margin-bottom: 6px; }
+    .profile .p-title { display: block; color: var(--text); font-weight: 700; font-size: 15px; }
+    .profile .p-org { display: block; margin-top: 6px; color: var(--blue); font-weight: 800; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; }
+    .profile .p-summary { color: var(--text); font-style: italic; margin-top: 16px !important; }
+    .profile p { margin-top: 14px !important; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+    .tag { padding: 7px 12px; border-radius: 999px; font-size: 12px; font-weight: 700; color: var(--blue); background: rgba(110,164,231,0.1); border: 1px solid rgba(110,164,231,0.24); }
+    .cred-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--line); }
+    .cred-grid h4 { font-family: 'Manrope', sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+    .cred-grid ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 14px; line-height: 1.7; }
+    .commit-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .commit-grid h3 { font-size: 20px; }
+    .commit-num { display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 12px; margin-bottom: 14px; color: var(--blue); font-weight: 800; background: rgba(110,164,231,0.12); border: 1px solid rgba(110,164,231,0.26); }
+    .cta-blue { background: linear-gradient(135deg, rgba(110,164,231,0.2), rgba(110,164,231,0.06) 48%, rgba(255,255,255,0.03) 100%), rgba(12,18,28,0.92); border-color: rgba(110,164,231,0.24); }
+    .cta-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-blue { color: #fff; background: linear-gradient(135deg, #3f78c4 0%, var(--blue) 100%); box-shadow: 0 16px 40px rgba(110,164,231,0.28); }
+    @media (max-width: 1100px) { .commit-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 760px) {
+      .profile { grid-template-columns: 1fr; }
+      .profile-photo, .profile-initials { width: 180px; margin: 0 auto; }
+      .cred-grid, .commit-grid { grid-template-columns: 1fr; }
+      .people-tabs { display: flex; width: 100%; }
+      .people-tab { flex: 1; padding: 12px 10px; }
+    }
+  </style>
+
   <header class="page-hero">
     <div class="container">
-      <div class="eyebrow">Leadership</div>
-      <h1 style="margin-top:20px;">The Visionaries Behind Our Foundation</h1>
-      <p>Our leadership team brings decades of experience in educational strategy, clinical services, nonprofit administration, and community development to ensure every Florida student has what they need to succeed.</p>
+      <div class="eyebrow-blue">Leadership &amp; Governance</div>
+      <h1 style="margin-top:20px;">Our People &amp; Governance</h1>
+      <p>Meet the leadership team behind Blooming Academies Foundation and Blooming College Academies, and the Board of Directors that guides our work.</p>
+      <div class="people-tabs" role="tablist">
+        <button class="people-tab active" role="tab" id="tab-people" aria-controls="our-people" aria-selected="true" onclick="showTab('our-people')">Our People</button>
+        <button class="people-tab" role="tab" id="tab-governance" aria-controls="governance" aria-selected="false" onclick="showTab('governance')">Governance</button>
+      </div>
     </div>
   </header>
 
-  <section class="section">
-    <div class="container" style="display:grid; gap:24px;">
+  <!-- ===================== OUR PEOPLE ===================== -->
+  <div class="tab-panel active" id="our-people" role="tabpanel" aria-labelledby="tab-people">
+    <section class="section">
+      <div class="container">
+        <div class="panel-intro">
+          <div class="eyebrow-blue">Our Leadership Team</div>
+          <h2>The people who tend the garden.</h2>
+          <p>Academics, clinical care, and operations sit side by side at Blooming College Academies. These are the leaders who make the SEED methodology real for every student and family we serve.</p>
+          <p style="font-size:15px;">Looking for our Board of Directors? <button class="text-link" onclick="showTab('governance', true)">Visit governance.</button></p>
+        </div>
 
-      <div class="card" style="padding:32px;">
-        <div class="person-card">
-          <div class="avatar">EV</div>
-          <div class="person-info">
-            <h3>Dr. Elena Vance</h3>
-            <span class="role">Executive Director</span>
-            <p>Elena oversees the foundation's strategic vision and day-to-day operations, ensuring every initiative aligns with our mission of K-12 student success. With over twenty years of experience in educational leadership, she fosters partnerships with Florida school boards and community stakeholders. Her dedication to equity-driven growth has transformed the foundation into a regional leader for family empowerment.</p>
+        <div style="display:grid; gap:24px;">
+          <article class="card" style="padding:32px;">
+            <div class="profile">
+              <img class="profile-photo" src="https://bloomingcollegeacademy.org/team/joy-hicks.jpg" alt="Dr. Joy Gomez Hicks" loading="lazy">
+              <div>
+                <h3>Dr. Joy Gomez Hicks</h3>
+                <span class="p-title">Senior Director of Academics</span>
+                <span class="p-org">Blooming College Academies</span>
+                <p>Dr. Joy Gomez Hicks serves as Senior Director of Academics, bringing extensive experience in educational leadership, curriculum and instruction, school improvement, and student learning. Throughout her career, she has served as a classroom teacher, instructional coach, school principal, and district/network-level academic leader, supporting educators and students across diverse educational settings.</p>
+                <p>With a Doctorate in Education and a passion for creating meaningful learning experiences, she is committed to strengthening academic programs, supporting instructional excellence, and ensuring that students have the opportunity to reach their full potential. Her experience spans curriculum development, professional learning, instructional leadership, assessment, and program development.</p>
+                <p>As Senior Director of Academics, she is dedicated to advancing academic excellence while fostering a culture of collaboration, innovation, and continuous improvement.</p>
+                <div class="tag-row"><span class="tag">Curriculum &amp; Instruction</span><span class="tag">Instructional Leadership</span><span class="tag">School Improvement</span><span class="tag">Assessment</span><span class="tag">Professional Learning</span></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" style="padding:32px;">
+            <div class="profile">
+              <img class="profile-photo" src="https://bloomingcollegeacademy.org/team/danielle-gary.jpg" alt="Danielle E. Gary" loading="lazy">
+              <div>
+                <h3>Danielle E. Gary</h3>
+                <span class="p-title">Director of Social Services</span>
+                <span class="p-org">Blooming College Academies</span>
+                <p>Danielle E. Gary is the Director of Social Services at Blooming College Academies. Danielle contributes more than a decade of experience providing direct services to youth.</p>
+                <p>Danielle's clinical work includes leading life skills groups, health education classes, crisis response, individual therapy, family therapy, and self-sufficiency planning. She uses evidence-based approaches to empower and educate youth. Her clinical approach helps youth process their emotions, cope with setbacks, and build resilience.</p>
+                <p>Danielle is an alumna of The City College of New York (CUNY) and John Jay College of Criminal Justice (CUNY), earning degrees in Psychology and Forensic Mental Health Counseling, respectively.</p>
+                <div class="tag-row"><span class="tag">Individual &amp; Family Therapy</span><span class="tag">Crisis Response</span><span class="tag">Life Skills Groups</span><span class="tag">Health Education</span><span class="tag">Self-Sufficiency Planning</span></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" style="padding:32px;">
+            <div class="profile">
+              <img class="profile-photo" src="https://bloomingcollegeacademy.org/team/joanna-mayo.jpg" alt="Joanna Mayo" loading="lazy">
+              <div>
+                <h3>Joanna Mayo</h3>
+                <span class="p-title">Director of Administration</span>
+                <span class="p-org">Blooming Academies Foundation</span>
+                <p>Joanna Mayo serves as the Director of Administration for Blooming Academies Foundation (BAF), bringing a diverse background in administration, operations, finance, human resources, and organizational management.</p>
+                <p>At BAF, Joanna provides leadership across administration, operations, compliance, organizational planning, policy and procedure development, and employee processes. She works closely with leadership and organizational partners to build the systems and infrastructure needed to support BAF's programs, strengthen its operations, and facilitate sustainable growth.</p>
+                <p>Through her work at BAF, Joanna is committed to building the organizational foundation necessary to expand the Foundation's impact and create meaningful opportunities for students and families throughout Florida.</p>
+                <div class="tag-row"><span class="tag">Operations &amp; Compliance</span><span class="tag">Human Resources</span><span class="tag">Finance</span><span class="tag">Policy &amp; Procedure</span><span class="tag">Organizational Planning</span></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" style="padding:32px;">
+            <div class="profile">
+              <div class="profile-initials" aria-hidden="true">CL</div>
+              <div>
+                <h3>Christian Lee</h3>
+                <span class="p-title">Director of IT and Finance</span>
+                <span class="p-org">Blooming Academies Foundation</span>
+                <p>Christian Lee serves as Director of IT and Finance for Blooming Academies Foundation, where he built the organization's comprehensive multi-school financial model supporting its four-school charter network and leads its web and technology infrastructure.</p>
+                <p>He brings a background in education technology from his work at SchoolAI, where he helps K-12 districts bring tools into the classroom that save teachers time and allow them to reach every student individually. These tools give teachers full visibility into how their classroom is progressing, using dialogues with students to check understanding against learning benchmarks in real time.</p>
+                <p>Christian holds a B.S. in Business Management from Alabama State University, where he graduated Cum Laude and made the Dean's List while playing Defensive End for the football team on a combined athletic and academic scholarship.</p>
+                <p>During that same time, he founded a tutoring collective to help fellow students, particularly athletes, stay on top of their coursework, juggling practices, games, and travel while running the program.</p>
+                <div class="tag-row"><span class="tag">Financial Modeling</span><span class="tag">Multi-School Budgeting</span><span class="tag">Web &amp; Technology Infrastructure</span><span class="tag">Education Technology</span><span class="tag">Systems &amp; Data</span></div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta-band cta-blue">
+          <div>
+            <div class="eyebrow-blue">Come Meet Us</div>
+            <h2 style="font-size:clamp(28px,4vw,48px); margin-top:12px;">Every family works with this team from day one.</h2>
+            <p>From the first application question to graduation, our academic, clinical, and administrative leaders stay close to the students in their care. Start your application or reach out with a question.</p>
+          </div>
+          <div class="cta-actions">
+            <a class="btn btn-blue" href="admissions.html">Start Your Application</a>
+            <a class="btn btn-secondary" href="mailto:admissions@bloomingacademy.org">Email Admissions</a>
           </div>
         </div>
       </div>
+    </section>
+  </div>
 
-      <div class="card" style="padding:32px;">
-        <div class="person-card">
-          <div class="avatar">MT</div>
-          <div class="person-info">
-            <h3>Marcus Thorne</h3>
-            <span class="role">Director of Administration</span>
-            <p>Marcus coordinates the organizational structure and logistical workflows that support our foundation's statewide initiatives. He manages personnel resources, facility operations, and administrative strategy to ensure a stable and efficient environment for our community programs. Marcus's focus on excellence enables our team to deliver consistent, high-quality educational support to students across Florida.</p>
+  <!-- ===================== GOVERNANCE ===================== -->
+  <div class="tab-panel" id="governance" role="tabpanel" aria-labelledby="tab-governance">
+    <section class="section" style="padding-bottom:0;">
+      <div class="container">
+        <div class="panel-intro">
+          <div class="eyebrow-blue">Our People · Governance</div>
+          <h2>The board that keeps us rooted.</h2>
+          <p>Our Board of Directors provides the governance, oversight, and strategic direction behind Blooming College Academies and the Blooming Academies Foundation. Directors serve voluntarily, bringing decades of industry, civic, and educational leadership to the students in our care.</p>
+          <p style="font-size:15px;">Looking for the leaders who run our schools day to day? <button class="text-link" onclick="showTab('our-people', true)">Meet the team.</button></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow-blue">How We Govern</div>
+          <h2 style="margin-top:14px;">Four commitments that guide every board decision.</h2>
+        </div>
+        <div class="commit-grid">
+          <div class="card"><div class="commit-num">1</div><h3>Fiduciary Oversight</h3><p>The Board safeguards the mission, approves the budget, and holds the organization accountable to families, funders, and the state.</p></div>
+          <div class="card"><div class="commit-num">2</div><h3>Academic Accountability</h3><p>Directors review academic outcomes against the SEED methodology so instructional decisions stay anchored to student results.</p></div>
+          <div class="card"><div class="commit-num">3</div><h3>Community Representation</h3><p>Directors bring professional and lived experience from the communities we serve, and they stay reachable to the families in them.</p></div>
+          <div class="card"><div class="commit-num">4</div><h3>Long-Term Stewardship</h3><p>The Board sets strategy for sustainable growth across the Blooming Academies Foundation school network.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow-blue">Board of Directors</div>
+          <h2 style="margin-top:14px;">Meet our directors.</h2>
+          <p>Additional director profiles are added as the Board grows.</p>
+        </div>
+
+        <div style="display:grid; gap:24px;">
+          <article class="card" style="padding:32px;">
+            <div class="profile">
+              <img class="profile-photo" src="https://bloomingcollegeacademy.org/board/calvina-clay.jpg" alt="Calvina A. Clay, Ph.D." loading="lazy">
+              <div>
+                <h3>Calvina A. Clay, PH.D.</h3>
+                <span class="p-title">Member, Governing Board</span>
+                <span class="p-org">School Counselor, Department of Support Services · Palm Beach Public Schools</span>
+                <p class="p-summary">A certified school counselor of 34 years who has spent her career supporting students and families across Miami-Dade and Palm Beach County public schools.</p>
+                <p>Calvina A. Clay was born and reared in Belle Glade, Florida. She is a graduate of Glades Central High School and has earned degrees from the University of Miami (B.S.), St. Thomas University (M.S.), and The Union University (Ph.D.).</p>
+                <p>She has been a certified school counselor for 34 years. She served as a school counselor with Miami-Dade County Public Schools for 30 years, during which she was a committee member of the Education Excellence Student Advisory Council for 8 years and test chairperson for 18 years. She then returned to Palm Beach County, where she is a school counselor in the Department of Support Services for Palm Beach Public Schools.</p>
+                <p>Alongside her school-based work, Calvina stays active in professional counseling associations and in community and faith-based development organizations across Palm Beach County.</p>
+                <div class="tag-row"><span class="tag">School Counseling</span><span class="tag">Student Support Services</span><span class="tag">Student Mental Health &amp; Well-Being</span><span class="tag">Academic Advising</span><span class="tag">Assessment Administration</span><span class="tag">Student Advisory Councils</span></div>
+                <div class="cred-grid">
+                  <div><h4>Education &amp; Credentials</h4><ul><li>Doctor of Philosophy — The Union University</li><li>Master of Science — St. Thomas University</li><li>Bachelor of Science — University of Miami</li><li>Certified school counselor, 34 years</li></ul></div>
+                  <div><h4>Board &amp; Community Service</h4><ul><li>Governing Board, Blooming Academies Foundation</li><li>Florida Counseling Association</li><li>National Coalition of 100 Black Women, West Palm Beach Chapter</li><li>Mental Health/Well-Being Strategic Plan Initiative workgroup, Palm Beach Schools</li><li>Hurst Chapel Development Corporation</li></ul></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" style="padding:32px;">
+            <div class="profile">
+              <img class="profile-photo" src="https://bloomingcollegeacademy.org/board/sean-loomis.jpg" alt="Sean Loomis" loading="lazy">
+              <div>
+                <h3>Sean Loomis</h3>
+                <span class="p-title">Member, Board of Directors</span>
+                <span class="p-org">Financial Professional &amp; Generational Wealth Strategist · Palm Beach, Florida</span>
+                <p class="p-summary">A licensed financial professional, educator, and public speaker who helps families and business owners build, protect, and transfer wealth across generations.</p>
+                <p>Sean Loomis is a licensed financial professional, educator, public speaker, and generational wealth strategist based in Palm Beach, Florida. With more than 20 years in Palm Beach County, Sean brings a rare blend of pastoral leadership, organizational strategy, and financial expertise to the families and businesses he serves.</p>
+                <p>A 2007 graduate of Palm Beach Atlantic University, where he studied Organizational Management and Company Culture, Sean began his career in faith-based nonprofit and pastoral ministry. Through years of counseling and leadership, he witnessed firsthand the financial stress burdening hardworking business owners and families.</p>
+                <p>He made it his mission to change that. Today, Sean helps families master their money with clarity and confidence, equipping them with the education and strategies needed to build, protect, and transfer wealth for generations to come.</p>
+                <p>He and his wife April have a fulfilling marriage of eight years and have partnered together in their business endeavors. They are raising four children — Lydia, Juniper, Aslan, and Starla — and remain deeply committed to faith, family, and community.</p>
+                <div class="tag-row"><span class="tag">Generational Wealth Strategy</span><span class="tag">Financial Education</span><span class="tag">Family &amp; Business Financial Planning</span><span class="tag">Organizational Strategy &amp; Culture</span><span class="tag">Public Speaking</span><span class="tag">Nonprofit &amp; Pastoral Leadership</span></div>
+                <div class="cred-grid">
+                  <div><h4>Education &amp; Credentials</h4><ul><li>Palm Beach Atlantic University, 2007 — Organizational Management &amp; Company Culture</li><li>Licensed financial professional</li></ul></div>
+                  <div><h4>Board &amp; Community Service</h4><ul><li>Board of Directors, Blooming Academies Foundation</li></ul></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" style="padding:32px;">
+            <div class="profile">
+              <img class="profile-photo" src="https://bloomingcollegeacademy.org/board/cassandra-oliver.jpg" alt="Cassandra W. Oliver" loading="lazy">
+              <div>
+                <h3>Cassandra W. Oliver</h3>
+                <span class="p-title">Member, Board of Directors</span>
+                <span class="p-org">Co-Owner &amp; Chief Operating Officer · K.W.A. Group, LLC</span>
+                <p class="p-summary">A career professional with more than 20 years across education, financial investments, and event planning, known for building policies and procedures that make organizations run better.</p>
+                <p>Cassandra W. Oliver is a career professional with more than 20 years of experience in education, financial investments, and event planning. A proud Haitian American, she has risen to the top of each field she has pursued, and she is known for creating policies and procedures that bring efficiency and productivity to the professional environment.</p>
+                <p>Before leaving her post in 2000, she was credited as the youngest investment broker with Costa Financial Inc. In education, she received the Distinguished Principal Leadership Award for training principals throughout Florida.</p>
+                <p>Cassandra currently serves as co-owner and Chief Operating Officer of K.W.A. Group, LLC, the parent company of K.W.A. Group Branding, K.W.A. Group RISE, and K.W.A. Group RISE Outreach. The motto of K.W.A. Group is “Promote Your Brand. Promote Your Event. Promote Your Life!”</p>
+                <p>Through K.W.A. Group Branding, she helps clients promote their brand with promotional items and intentional marketing designed to provoke a call to action or achieve an expected result from their end users. As co-owner of K.W.A. Group RISE, the company expanded to promote events along with training, consulting, and public speaking. K.W.A. Group RISE Outreach promotes life by serving as the community service and enrichment arm, providing educational resources to community members.</p>
+                <div class="tag-row"><span class="tag">Operations &amp; Business Strategy</span><span class="tag">Brand &amp; Promotional Marketing</span><span class="tag">Event Planning &amp; Production</span><span class="tag">Educational Leadership Training</span><span class="tag">Policy &amp; Procedure Development</span><span class="tag">Training, Consulting &amp; Public Speaking</span></div>
+                <div class="cred-grid">
+                  <div><h4>Education &amp; Credentials</h4><ul><li>Distinguished Principal Leadership Award — principal training, State of Florida</li></ul></div>
+                  <div><h4>Board &amp; Community Service</h4><ul><li>Board of Directors, Blooming Academies Foundation</li><li>K.W.A. Group RISE Outreach — community service and enrichment, providing educational resources to community members</li></ul></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" style="padding:32px;">
+            <div class="profile">
+              <img class="profile-photo" src="https://bloomingcollegeacademy.org/board/clayton-robinson.jpg" alt="Clayton W. Robinson" loading="lazy">
+              <div>
+                <h3>Clayton W. Robinson, MSE, MBA, PHD CANDIDATE</h3>
+                <span class="p-title">Member, Board of Directors</span>
+                <span class="p-org">Vice President, Transmission &amp; Grid Integration · Cordelio Power</span>
+                <p class="p-summary">A seasoned energy executive, electrical engineer, and strategic leader with more than 20 years of experience advancing the electric utility and renewable energy industries.</p>
+                <p>Clayton W. Robinson is a seasoned energy executive, electrical engineer, and strategic leader with more than 20 years of experience advancing the electric utility and renewable energy industries. As Vice President of Transmission &amp; Grid Integration at Cordelio Power, he leads the transmission interconnection strategy for one of North America's growing renewable energy portfolios, overseeing the integration of utility-scale wind, solar, and battery energy storage projects into the electric grid.</p>
+                <p>Throughout his career, Clayton has built a reputation for delivering innovative, practical solutions to complex power system challenges. His expertise spans transmission planning, grid integration, renewable project development, power system engineering, financial valuation, mergers and acquisitions due diligence, regulatory compliance, and utility operations. He has managed multi-billion-dollar renewable development portfolios, negotiated Large Generator Interconnection Agreements representing more than 8 GW of renewable generation, and directed capital programs exceeding $450 million.</p>
+                <p>Before joining Cordelio Power, Clayton held leadership positions with NextEra Energy and Consolidated Edison Company of New York, where he played key roles in power system operations, engineering, emergency response, grid modernization, storm hardening initiatives, and the development of New York's first utility-integrated microgrid. His work has consistently focused on improving grid reliability, operational excellence, and the successful transition to a cleaner, more resilient energy future.</p>
+                <p>Beyond his professional accomplishments, Clayton is deeply committed to community service and leadership. He serves on the Board of Directors for the Friends of Porus Association Inc. (FOP), a New York-based nonprofit dedicated to supporting charitable, educational, and community development initiatives in Jamaica, and as Chairperson of the organization’s Student Affairs Committee, where he helps develop educational opportunities, mentorship programs, and initiatives that empower students and invest in the next generation of leaders.</p>
+                <p>Clayton also brings more than 10 years of entrepreneurial business operating experience, including retail and real estate holdings in his local community.</p>
+                <p>Driven by a passion for innovation, servant leadership, and sustainable development, Clayton believes that strong leadership, technical excellence, and community engagement are essential to creating lasting impact. His mission is to help build a more reliable, resilient, and sustainable energy future while contributing to the growth and development of communities at home and abroad.</p>
+                <div class="tag-row"><span class="tag">Transmission Planning &amp; Grid Integration</span><span class="tag">Renewable Project Development</span><span class="tag">Power System Engineering</span><span class="tag">Financial Valuation &amp; M&amp;A Due Diligence</span><span class="tag">Regulatory Compliance</span><span class="tag">Utility Operations</span></div>
+                <div class="cred-grid">
+                  <div><h4>Education &amp; Credentials</h4><ul><li>Master of Engineering, Electrical Engineering (Power Systems) — Manhattan College</li><li>Master of Business Administration, Finance concentration — Western New England University</li><li>Doctor of Philosophy, Engineering Management — in progress</li><li>Graduate Certificate in Leadership Principles — Harvard University</li><li>Professional certifications in electric power distribution systems</li></ul></div>
+                  <div><h4>Board &amp; Community Service</h4><ul><li>Board of Directors, Friends of Porus Association Inc. (FOP)</li><li>Chairperson, Student Affairs Committee, Friends of Porus Association Inc.</li></ul></div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta-band cta-blue">
+          <div>
+            <div class="eyebrow-blue">Board Inquiries</div>
+            <h2 style="font-size:clamp(28px,4vw,48px); margin-top:12px;">Questions for our Board of Directors?</h2>
+            <p>Families, partners, and prospective directors are welcome to reach out. Governance questions and board correspondence are routed through our administration office.</p>
+          </div>
+          <div class="cta-actions">
+            <a class="btn btn-blue" href="mailto:admissions@bloomingacademy.org">Contact the Board</a>
+            <button class="btn btn-secondary" onclick="showTab('our-people', true)">Meet the Leadership Team</button>
           </div>
         </div>
       </div>
+    </section>
+  </div>
 
-      <div class="card" style="padding:32px;">
-        <div class="person-card">
-          <div class="avatar">EV</div>
-          <div class="person-info">
-            <h3>Dr. Elena Vance</h3>
-            <span class="role">Senior Director of Academic Strategy, Curriculum & Instruction</span>
-            <p>Dr. Vance oversees the integration of innovative pedagogical frameworks and Florida educational standards across our entire network. She leads professional development initiatives that empower educators to deliver high-impact, personalized instruction for every K-12 student. Her strategic focus on curriculum design ensures academic rigor and creative engagement, preparing students for future success in higher education and leadership roles.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="card" style="padding:32px;">
-        <div class="person-card">
-          <div class="avatar">MS</div>
-          <div class="person-info">
-            <h3>Marcus Sterling, CPA</h3>
-            <span class="role">Controller / Director of Finances</span>
-            <p>Marcus provides strategic oversight of the foundation's financial health and scholarship endowments. He ensures rigorous fiscal accountability and transparent reporting, allowing our academic programs to scale effectively across Florida's K-12 landscape. His expertise in non-profit management guarantees that every donated dollar directly supports our mission of student empowerment.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="card" style="padding:32px;">
-        <div class="person-card">
-          <div class="avatar">SM</div>
-          <div class="person-info">
-            <h3>Dr. Sarah Mitchell</h3>
-            <span class="role">Director of Clinical Services</span>
-            <p>Dr. Sarah Mitchell oversees the coordination and delivery of clinical support services, ensuring a holistic approach to student well-being across all academies. She manages regional therapy programs and counseling initiatives that help K-12 students overcome emotional and developmental barriers to learning. Her leadership focuses on integrating health services with educational instruction to foster a safe, inclusive, and supportive environment for Florida's diverse student population.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="card" style="padding:32px;">
-        <div class="person-card">
-          <div class="avatar">EV</div>
-          <div class="person-info">
-            <h3>Elena Vance</h3>
-            <span class="role">Director of Recruitment, Enrollment and Retention</span>
-            <p>Driving the strategic growth of our academic community, this director oversees the complete lifecycle of engagement for both students and families. She develops innovative outreach programs and streamlined enrollment pathways to ensure that Florida's most promising students have access to our resources. By focusing on long-term retention strategies, she helps build a stable and thriving K-12 environment where every foundation member can blossom.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="cta-band">
-        <div>
-          <div class="eyebrow">Work With Us</div>
-          <h2 style="font-size:clamp(28px,4vw,48px); margin-top:12px;">Join our mission to transform education.</h2>
-          <p>Blooming Academies Foundation is always looking for passionate educators, administrators, and partners who share our vision for K-12 excellence.</p>
-        </div>
-        <a class="btn btn-primary" href="admissions.html">Get In Touch</a>
-      </div>
-    </div>
-  </section>
+  <script>
+  function showTab(id, scroll){
+    document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.toggle('active', p.id === id); });
+    document.querySelectorAll('.people-tab').forEach(function(t){
+      var on = t.getAttribute('aria-controls') === id;
+      t.classList.toggle('active', on); t.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    if (history.replaceState) history.replaceState(null, '', '#' + id);
+    if (scroll) document.querySelector('.people-tabs').scrollIntoView({behavior:'smooth', block:'start'});
+  }
+  (function(){ if (location.hash === '#governance') showTab('governance'); })();
+  </script>
 
   <footer class="site-footer">
     <div class="container">
